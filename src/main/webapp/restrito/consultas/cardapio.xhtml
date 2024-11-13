@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:composition template="/templates/pagina-cardapio.xhtml">
+        <ui:define name="title">
+            Cardápio
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form id="form1">
+                <p:growl id="mensagem" />
+
+                <body>
+                    <header>
+                        <h1>Pratos Principais</h1>
+                    </header>
+                    
+                    <main>
+                        <div class="menu-grid">
+                            <div class="menu-item">
+                                <img src="#{resource['imagens/kit-bronze-carne.png']}" alt="Kit Carnes Bronze"> </img>
+                                    <h2>Kit Carnes Bronze</h2>
+                                    <p>(Serve até 5 pessoas)</p>
+                                    <p>300g de Frango, 300g de Linguiça Campeira, 400g de Picanha Suína, 500g de Maminha, 500g de Costela de Gado</p>
+                                    <p class="price">R$350</p>
+                            </div>
+
+                            <div class="menu-item">
+                                <img src= "#{resource['imagens/kit-prata-carne.png']}" alt="Kit Carnes Prata"> </img>
+                                    <h2>Kit Carnes Prata</h2>
+                                    <p>(Serve até 5 pessoas)</p>
+                                    <p>300g de Linguiça de Pernil, 300g de Frango, 400g de Granito de Gado, 500g de Maminha, 500g de Costela de Gado</p>
+                                    <p class="price">R$400</p>
+                            </div>
+
+                            <div class="menu-item">
+                                <img src= "#{resource['imagens/kit-ouro-carne.png']}" alt="Kit Carnes Ouro"> </img>
+                                    <h2>Kit Carnes Ouro</h2>
+                                    <p>(Serve até 5 pessoas)</p>
+                                    <p>300g de Linguiça de Pernil, 400g de Maminha, 400g de Costela de Gado, 400g de Ovelha, 500g de Picanha de Gado</p>
+                                    <p class="price">R$450</p>
+                            </div>
+                            
+                        </div>
+                    </main>
+                </body>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

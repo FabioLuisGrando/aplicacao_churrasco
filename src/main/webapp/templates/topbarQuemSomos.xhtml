@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:composition> 
+        <h:form>    
+            <div class="topbarQuemSomos">
+                <div class="div-esquerda">
+
+                        <div class="dropdown">
+                            <a class="dropbtnQuemSomos" href="/aplicacao_churrasco/restrito/movimentos/quem-somos.xhtml">
+                                Quem somos                          
+                            </a>
+                        </div>
+
+                    <div class="dropdown">
+                            <a class="dropbtnQuemSomos" href="/aplicacao_churrasco/restrito/consultas/cardapio.xhtml" style="#{gerBean.styleMenuCadastroClinica};">
+                                Cardápio
+                            </a>
+                    </div>
+                    
+                    <div class="dropdown">
+                            <a class="dropbtnQuemSomos" href="/aplicacao_churrasco/restrito/consultas/especialidade.xhtml" style="#{gerBean.styleMenuCadastroClinica};">
+                                Promoções
+                            </a>
+                    </div>      
+                    
+                    <div class="dropdown">
+                        <a class="dropbtnQuemSomos" href="/aplicacao_churrasco/restrito/cadastros/consulta-medica.xhtml" style="#{gerBean.styleMenuCadastroClinica};">
+                            Pedidos
+                        </a>
+                    </div>
+                </div>
+
+                <div class="div-centralizada">
+                    <p:link outcome="/index">
+                        <h:graphicImage styleClass="logo" value="/resources/imagens/logo.png" />
+                    </p:link>
+                    <p:outputLabel value="Churrasco Pronto" styleClass="labelNomeEmpresa"/>
+                </div>
+                
+                <div class="div-direita">
+                    <div align="right">
+                        <p:outputLabel value="#{usuarioLogadoBean.tipoAcessoEnum.descricao} - #{usuarioLogadoBean.pessoaLogada.nome}" />
+                    </div>
+                
+                    <div align="right">
+                        <button onclick="logout()" class="dropbtn"><i class="icone pi pi-sign-out"></i>Sair</button>
+                        <p:remoteCommand name="logout" actionListener="#{gerBean.logout()}" process="@this" />
+                    </div>1
+                    
+                    </div>
+                </div>    
+            
+        </h:form>
+        
+    </ui:composition>
+</html>

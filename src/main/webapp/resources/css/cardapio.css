@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cabeçalho */
+header h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+/* Layout de Grade para o Cardápio */
+.menu-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Estilo dos Itens do Cardápio */
+.menu-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Largura fixa para o card */
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease; /* Efeito ao passar o mouse */
+}
+
+.menu-item:hover {
+    transform: translateY(-5px); /* Efeito de elevação */
+}
+
+.menu-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Título e Descrição dos Itens */
+.menu-item h2 {
+    font-size: 1.5em;
+    margin: 10px 0 5px;
+}
+
+.menu-item p {
+    color: #666;
+    margin: 5px 0;
+}
+
+/* Estilo do Preço */
+.menu-item .price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #b23a3a;
+    margin-top: 10px;
+}

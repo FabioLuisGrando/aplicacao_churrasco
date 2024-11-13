@@ -1,0 +1,23 @@
+.ui-datatable-tablewrapper {
+    min-height: 480px !important;
+}
+
+.ui-dialog-content {
+    min-height: 620px !important;
+}
+
+body .ui-panelgrid .ui-panelgrid-cell {
+    border: 0px;
+}
+
+.ui-panelgrid-cell, .ui-inputtext, .ui-inputtextarea, .ui-panelgrid, .ui-panelgrid tbody {
+    width: 100%;
+}
+
+.ui-selection-column {
+    width: 16px;
+}
+
+.toolbar-filtros {
+    width: 100%;
+}
