@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+
+    <h:body>
+        <style>
+            div ~ a {
+                text-align: center;
+            }
+        </style>
+
+        <h:outputStylesheet library="css" name="main.css"  />
+        <h:outputStylesheet library="css" name="estiloLogin.css" />
+        <h:outputScript library="js" name="primefacesLocale.js" />
+
+        <div class="divBody">
+            <h:form id="form1">
+                <p:growl id="mensagem" />
+
+                <div class="divLogin">
+                    <p:panelGrid columns="1" layout="grid">
+                        <p:panelGrid columns="1" styleClass="padPg pgWidth" style="text-align: center">
+                            <h:graphicImage styleClass="logo" value="/resources/imagens/logo.png" width="100" height="100" />
+                        </p:panelGrid>
+
+                        <p:panelGrid columns="1" styleClass="padPg pgWidth pnTitulo">
+                            <p:outputLabel value="Login" styleClass="tituloTexto" />
+                        </p:panelGrid>
+
+                        <p:panelGrid columns="1" styleClass="padPg pgWidth">
+                            <p:outputLabel value="CPF" for="usuario"  />
+                            <p:inputText id="usuario" value="#{loginBean.cpf}" styleClass="stInput" placeholder="Informe seu CPF" maxlength="14" />
+                        </p:panelGrid>
+
+                        <p:panelGrid columns="1" styleClass="padPg pgWidth">
+                            <p:outputLabel value="Senha" for="senha"  />
+                            <p:password id="senha" value="#{loginBean.senha}" toggleMask="true" styleClass="stInput" placeholder="Informe sua senha" />
+                        </p:panelGrid>
+
+                        <p:panelGrid columns="1" styleClass="padPg pgWidth">
+                            <br />
+                            <p:commandButton value="Login" actionListener="#{loginBean.doLogin()}" 
+                                             styleClass="btnLogin" process=":form1" update=":form1"
+                                             icon="pi pi-sign-in" />
+                        </p:panelGrid>
+
+                        <p:panelGrid columns="1" layout="grid" style="text-align: center">
+                            <p:commandLink value="Esqueci minha senha" actionListener="#{loginBean.abrirDialogEsqueciMinhaSenha()}" />
+                        </p:panelGrid>
+
+                    </p:panelGrid>
+                </div>
+            </h:form>
+
+            <h:form id="form2">
+<!--                <p:dialog widgetVar="wvDlgEsqueciMinhaSenha" header="Esqueci Minha Senha" width="auto" modal="true">
+                    <p:panel id="panelEsqueciMinhaSenha">
+                        <p:panelGrid columns="2" layout="grid" rendered="{loginBean.codigoConfirmacao eq null}">
+                            <p:panelGrid columns="1" layout="grid">
+                                <p:outputLabel value="CPF" for="cpf"  />
+                                <p:inputText id="cpf" value="{loginBean.cpf}" placeholder="Informe seu CPF" required="true" />
+                            </p:panelGrid>
+
+                            <p:panelGrid columns="1" layout="grid">
+                                <p:outputLabel value="Telefone" for="telefone"  />
+                                <p:inputMask id="telefone" value="#loginBean.telefone}" 
+                                             placeholder="Informe seu Telefone" required="true" mask="(99) 99999-9999" validateMask="true">
+                                    <p:ajax event="blur" process="@this" />
+                                </p:inputMask>
+                            </p:panelGrid>
+
+                            <p:panelGrid columns="1" layout="grid">
+                                <p:commandButton value="Enviar Código de Confirmação" 
+                                                 actionListener="{loginBean.enviarCodigoConfirmacao()}" styleClass="btnLogin" 
+                                                 process="form2" update="form2:panelEsqueciMinhaSenha  form1:mensagem" />
+                            </p:panelGrid>
+                        </p:panelGrid>
+
+                        <h:panelGroup id="pgCodigoConfirmacao">
+                            <p:panelGrid columns="2" layout="grid" rendered="{loginBean.codigoConfirmacao ne null and not loginBean.exibirSenha}">
+                                <p:panelGrid columns="1" layout="grid" >
+                                    <p:outputLabel value="Código de Confirmação" for="codigoConfirmacao"  />
+                                    <p:inputText id="codigoConfirmacao" value="{loginBean.codigoConfirmacaoInformado}" placeholder="Informe seu Código de Confirmação" 
+                                                 required="true" />
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="1" layout="grid" >
+                                    <p:commandButton value="Validar Código de Confirmação" 
+                                                     actionListener="{loginBean.validarCodigoConfirmacao()}" styleClass="btnLogin" 
+                                                     process="form2 form1:mensagem" update="form2:pgCodigoConfirmacao form2:pgSenha form1:mensagem" />
+                                </p:panelGrid>
+                            </p:panelGrid>
+                        </h:panelGroup>
+
+                        <h:panelGroup id="pgSenha">
+                            <p:panelGrid columns="2" layout="grid" rendered="{loginBean.exibirSenha}">
+                                <p:panelGrid columns="1" layout="grid" >
+                                    <p:outputLabel value="Senha" for="senha"  />
+                                    <p:password id="senha" value="{loginBean.novaSenha}" toggleMask="true" styleClass="stInput" placeholder="Informe sua senha" />
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="1" layout="grid" >
+                                    <p:outputLabel value="Confirme sua Senha" for="confSenha"  />
+                                    <p:password id="confSenha" value="{loginBean.confirmacaoNovaSenha}" toggleMask="true" styleClass="stInput" placeholder="Confirme sua senha" />
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="1" layout="grid" >
+                                    <p:commandButton value="Confirmar Nova Senha" 
+                                                     actionListener="{loginBean.alterarSenha()}" styleClass="btnLogin" 
+                                                     process="form2 form1:mensagem" update="form2:pgCodigoConfirmacao form1:mensagem" />
+                                </p:panelGrid>
+                            </p:panelGrid>
+                        </h:panelGroup>
+                    </p:panel>
+                </p:dialog>     -->
+            </h:form>
+        </div>
+    </h:body>
+</html>

@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:components="http://xmlns.jcp.org/jsf/composite/components"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/templates/paginaQuemSomos.xhtml">
+        <ui:define name="title">
+            Cadastro de Médico
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form id="form1">
+                <p:growl id="mensagem" />
+
+                <p:tabView id="tv" widgetVar="wvTv">
+                    <p:tab title="Informações Gerais">
+                        <p:panel id="painelInformacoesCliente" header="Dados Principais">
+                            <p:panelGrid layout="grid" columns="2">
+                                <p:panelGrid layout="grid" columns="1">
+                                    <p:outputLabel value="Código" for="codigo" />
+                                    <p:inputText id="codigo" value="#{pesquisaPedidosBean.filtroPedidos.id}" disabled="true" styleClass="inputCodigo" />
+                                </p:panelGrid>
+                            </p:panelGrid>
+
+                            <p:panelGrid layout="grid" columns="2">
+                                <p:panelGrid layout="grid" columns="1">
+                                    
+                                    <p:outputLabel value="Nome Completo" for="nome" />
+                                    <p:inputText id="nome" value="#{usuarioLogadoBean.usuarioLogada.nome}"
+                                                 disabled="true"  maxlength="498" />
+
+                                    <p:outputLabel value="E-mail" for="email" />
+                                    <p:inputText id="email" value="#{usuarioLogadoBean.usuarioLogada.email}"
+                                                 disabled="true" maxlength="498" />
+                                </p:panelGrid>
+
+                                <p:panelGrid layout="grid" columns="1">
+                                    <p:outputLabel value="Telefone" for="telefone" />
+                                    <p:inputMask id="telefone" value="#{usuarioLogadoBean.usuarioLogada.telefone}" styleClass="input250" 
+                                                 mask="(99) 99999-9999" validateMask="true" disabled="true">
+                                        <p:ajax event="blur" process="@this" />
+                                    </p:inputMask>
+                                </p:panelGrid> 
+                            </p:panelGrid> 
+                        </p:panel>
+
+                        <br />
+
+                        <p:panel id="painelInformacoesGerais" header="Localização">
+                            <p:panelGrid layout="grid" columns="2">
+                                <p:panelGrid layout="grid" columns="1">
+                                    <p:outputLabel value="CEP" for="cep" />
+                                    <p:inputMask id="cep" value="#{medicoBean.crudObj.endereco.cep}" styleClass="input250" 
+                                                 required="true" requiredMessage="O CEP é obrigatório"
+                                                 mask="99999-999" validateMask="true">
+                                        <p:ajax event="blur" process="@this" update="form1:tv:painelInformacoesGerais" />
+                                    </p:inputMask>
+                                </p:panelGrid>
+                            </p:panelGrid>
+
+                            <p:panelGrid layout="grid" columns="2">
+                                <p:panelGrid layout="grid" columns="1">
+                                    <p:outputLabel value="País" for="pais" />
+                                    <p:inputText id="pais" value="#{medicoBean.crudObj.endereco.cidade.estado.pais.nome}" disabled="true" />
+
+                                    <p:outputLabel value="Estado" for="estado" />
+                                    <p:inputText id="estado" value="#{medicoBean.crudObj.endereco.cidade.estado.nome}" disabled="true" />
+
+                                    <p:outputLabel value="Cidade" for="cidade" />
+                                    <p:inputText id="cidade" value="#{medicoBean.crudObj.endereco.cidade.nome}" disabled="true" />
+
+                                    <p:outputLabel value="Bairro" for="bairro" />
+                                    <p:inputText id="bairro" value="#{medicoBean.crudObj.endereco.bairro}" />
+                                </p:panelGrid>
+
+                                <p:panelGrid layout="grid" columns="1">
+                                    <p:outputLabel value="Rua" for="rua" />
+                                    <p:inputText id="rua" value="#{medicoBean.crudObj.endereco.rua}" />
+
+                                    <p:outputLabel value="Complemento" for="complemento" />
+                                    <p:inputText id="complemento" value="#{medicoBean.crudObj.endereco.complemento}" />
+
+                                    <p:outputLabel value="Número" for="numero" />
+                                    <p:inputText id="numero" value="#{medicoBean.crudObj.endereco.numero}" styleClass="input250">
+                                        <p:keyFilter mask="pint" />  
+                                    </p:inputText>
+                                </p:panelGrid>
+                            </p:panelGrid>
+                        </p:panel>
+                    </p:tab>
+
+                    <p:tab title="Informações do Médico">
+                        <p:panel id="painelInformacoesMedicas" header="Dados do Médico">
+                            <p:panelGrid layout="grid" columns="2">
+                                <components:inputConverter labelValue="Horário Semanal *"                                
+                                                           inputObject="#{medicoBean.crudObj.medico.horarioSemanal}"
+                                                           inputId="#{medicoBean.crudObj.medico.horarioSemanal.id}"
+                                                           inputValue="#{medicoBean.crudObj.medico.horarioSemanal.descricao}"
+                                                           buscaAction="#{buscaBean.abrirPesquisaHorarioSemanal()}"
+                                                           retornoAction="#{medicoBean.selecionarHorarioSemanal()}"
+                                                           limpaAction="#{medicoBean.limparHorarioSemanal()}"
+                                                            />
+
+                                <components:inputConverter labelValue="Especialidade *"                                
+                                                           inputObject="#{medicoBean.crudObj.medico.especialidade}"
+                                                           inputId="#{medicoBean.crudObj.medico.especialidade.id}"
+                                                           inputValue="#{medicoBean.crudObj.medico.especialidade.descricao}"
+                                                           buscaAction="#{buscaBean.abrirPesquisaEspecialidade()}"
+                                                           retornoAction="#{medicoBean.selecionarEspecialidade()}"
+                                                           limpaAction="#{medicoBean.limparEspecialidade()}"
+                                                           />
+                            </p:panelGrid>
+
+                            <p:panelGrid layout="grid" columns="2">
+                                <p:panelGrid layout="grid" columns="1">
+                                    <p:outputLabel value="Duração da Consulta em Minutos" for="duracaoConsulta" />
+                                    <p:inputText id="duracaoConsulta" value="#{medicoBean.crudObj.medico.duracaoConsulta}"
+                                                 required="true" requiredMessage="O tempo de duração da consulta é obrigatório"
+                                                 styleClass="input250" >
+                                        <p:keyFilter mask="pint" />  
+                                    </p:inputText>     
+                                </p:panelGrid>
+                            </p:panelGrid>
+                        </p:panel>
+                    </p:tab>
+                </p:tabView>
+
+                <components:toolbarCadastro bean="#{medicoBean}" 
+                                            cancelarRendered="#{gerBean.tipoAcessoAdministrador}" 
+                                            abrirPesquisa="#{buscaBean.abrirPesquisaMedico()}"
+                                            pesquisarRendered="#{gerBean.tipoAcessoAdministrador}"
+                                            excluirRendered="#{gerBean.tipoAcessoAdministrador}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
