@@ -8,8 +8,14 @@
             <div class="topbarQuemSomos">
                 <div class="div-esquerda">
 
+                    <div class="dropdown">
+                        <a class="dropbtnQuemSomos" href="/aplicacao_churrasco/index.xhtml">
+                            Home                         
+                        </a>
+                    </div>
+
                         <div class="dropdown">
-                            <a class="dropbtnQuemSomos" href="/aplicacao_churrasco/restrito/movimentos/quem-somos.xhtml">
+                            <a class="dropbtnQuemSomos" href="/aplicacao_churrasco/restrito/consultas/quem-somos.xhtml">
                                 Quem somos                          
                             </a>
                         </div>
@@ -21,34 +27,33 @@
                     </div>
                     
                     <div class="dropdown">
-                            <a class="dropbtnQuemSomos" href="/aplicacao_churrasco/restrito/consultas/especialidade.xhtml" style="#{gerBean.styleMenuCadastroClinica};">
-                                Promoções
+                            <a class="dropbtnQuemSomos" href="/aplicacao_churrasco/restrito/consultas/pedidos.xhtml" style="#{gerBean.styleMenuCadastroClinica};">
+                                Meus Pedidos
                             </a>
-                    </div>      
+                    </div>    
                     
                     <div class="dropdown">
-                        <a class="dropbtnQuemSomos" href="/aplicacao_churrasco/restrito/cadastros/consulta-medica.xhtml" style="#{gerBean.styleMenuCadastroClinica};">
-                            Pedidos
+                        <a class="dropbtnQuemSomos" href="/aplicacao_churrasco/restrito/movimentos/realizarPedido.xhtml" style="#{gerBean.styleMenuCadastroClinica};">
+                            Realizar Pedido
                         </a>
-                    </div>
+                    </div>        
                 </div>
 
                 <div class="div-centralizada">
                     <p:link outcome="/index">
                         <h:graphicImage styleClass="logo" value="/resources/imagens/logo.png" />
                     </p:link>
-                    <p:outputLabel value="Churrasco Pronto" styleClass="labelNomeEmpresa"/>
                 </div>
                 
                 <div class="div-direita">
                     <div align="right">
-                        <p:outputLabel value="#{usuarioLogadoBean.tipoAcessoEnum.descricao} - #{usuarioLogadoBean.pessoaLogada.nome}" />
+                        <p:outputLabel value="#{usuarioLogadoBean.usuarioLogada.nome}" />
                     </div>
                 
                     <div align="right">
                         <button onclick="logout()" class="dropbtn"><i class="icone pi pi-sign-out"></i>Sair</button>
                         <p:remoteCommand name="logout" actionListener="#{gerBean.logout()}" process="@this" />
-                    </div>1
+                    </div>
                     
                     </div>
                 </div>    

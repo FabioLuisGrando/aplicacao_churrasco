@@ -9,11 +9,15 @@ body {
     min-height: 100vh;
     max-width: 100vw !important;
     background: #f9f9f9;
+    overflow-y: auto;
 }
 
 body, html {
     height: 100%;
     overflow: hidden;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto; /* Garante a barra de rolagem vertical */
 }
 
 .background-image {
@@ -173,6 +177,7 @@ body .ui-chkbox .ui-chkbox-box.ui-state-active {
 .text-content {
     flex: 1;
     padding: 20px;
+    max-height: 800px;
     font-size: 1.1rem;
     color: #333;
     font-family: 'Georgia', serif;
@@ -200,4 +205,46 @@ body .ui-chkbox .ui-chkbox-box.ui-state-active {
     border-radius: 5px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     object-fit: cover;
+}
+
+.map-section {
+    margin-top: 30px;
+    text-align: center;
+    max-width: 800px;
+    max-height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.map-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.map-description {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #333;
+}
+
+.map-link {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.map-link:hover {
+    text-decoration: underline;
+}
+
+.map-container {
+    display: flex;
+    justify-content: center;
 }

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:composition template="/templates/paginaQuemSomos.xhtml">
+        <ui:define name="title">
+            Quem Somos
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form id="form1">
+                <p:growl id="mensagem" />
+
+                <div class="about-section">
+                    <div class="text-content">
+                        <h2>Sobre Nós</h2>
+                        <p>
+                            Me chamo Edson Luís Grando, proprietário do estabelecimento de Churrasco Pronto chamado Tche Bagual, iniciei esse projeto com o objetivo de poder passar para os outros, além do real sabor da carne gaúcha, o amor e tradicionalismo feito em cada prato. Com muita prática a partir dos churrascos feitos nos domingos de manhã até em eventos que fui convidado para poder assar o churrasco, estou a seu dispor a cada prato requisitado!
+                        </p>
+
+                      <div class="map-section">
+                    <h2 class="map-title">Localização</h2>
+                    <p class="map-description">Estamos localizados na Rua Miguel Reinert 127. Venha nos visitar!</p>
+
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Miguel+Reinert+127" target="_blank" class="map-link">
+                        Abrir no Google Maps
+                    </a>
+
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.734113688753!2d-46.65076398502168!3d-23.58150458467078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a5edb5bf073%3A0x8e54813476e828e6!2sRua+Miguel+Reinert+127!5e0!3m2!1spt-BR!2sbr!4v1688080100935!5m2!1spt-BR!2sbr"
+                            width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+                        
+                    </div>
+
+                    <div class="image-content">
+                        <h:graphicImage library="imagens" name="churrasco1QuemSomos.png" class="about-image" alt="Imagem de churrasco"/>
+                        <h:graphicImage library="imagens" name="churrasco2QuemSomos.png" class="about-image" alt="Imagem de churrasco"/>
+                    </div>
+                    
+                </div>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
